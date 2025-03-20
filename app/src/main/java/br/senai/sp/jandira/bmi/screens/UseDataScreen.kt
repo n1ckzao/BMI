@@ -1,6 +1,5 @@
 package br.senai.sp.jandira.bmi.screens
 
-import android.service.autofill.UserData
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -19,12 +18,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Balance
 import androidx.compose.material.icons.filled.Height
-import androidx.compose.material.icons.filled.KeyboardDoubleArrowUp
 import androidx.compose.material.icons.filled.Numbers
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardColors
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
@@ -55,7 +52,13 @@ fun UserDataScreen(modifier: Modifier = Modifier){
         modifier = Modifier
             .fillMaxSize()
             .background(
-                color = Color(0xFF6133AD)
+                brush = Brush.verticalGradient(
+                    listOf(
+                        Color(0xff823234),
+                        Color(0xFF399699),
+                        Color(0xFF541E60)
+                    )
+                )
             )
     ){
         Column (
@@ -77,7 +80,7 @@ fun UserDataScreen(modifier: Modifier = Modifier){
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(4f),
+                    .weight(7f),
                 colors = CardDefaults.cardColors(
                     containerColor = Color.White
                 ),

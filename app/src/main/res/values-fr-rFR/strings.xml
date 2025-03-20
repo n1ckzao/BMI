@@ -10,4 +10,12 @@
     <string name="weight">Poids</string>
     <string name="height">Hauteur</string>
     <string name="calculate">Calculer</string>
+    <string name="result">Your BMI Result</string>
+    <string name="number">30,6</string>
+    <string name="BMI">You have Overweight</string>
+    <string name="age_n">17</string>
+    <string name="weight_kg">66 Kg</string>
+    <string name="height_cm">178 cm</string>
+
+    <string name="New_Calc">New Calc</string>
 </resources>

@@ -143,7 +143,7 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                                 Icon(
                                     imageVector = Icons.Default.Cabin,
                                     contentDescription = "",
-                                    tint = Color.Red
+                                    tint = Color.Black
                                 )
                             },
                             keyboardOptions = KeyboardOptions(
