@@ -1,5 +1,6 @@
 package br.senai.sp.jandira.bmi.screens
 
+import android.content.Context
 import androidx.compose.animation.expandHorizontally
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -30,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.VertexMode
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -38,6 +40,13 @@ import br.senai.sp.jandira.bmi.R
 
 @Composable
 fun BMIResultScreen(modifier: Modifier = Modifier){
+    val context = LocalContext.current
+    val userFile = context
+        .getSharedPreferences("user_file", Context.MODE_PRIVATE)
+    val userAge = userFile.getString("user_age", "")
+    val userHeight = userFile.getString("user_height", "")
+    val userWeight = userFile.getString("user_weight", "")
+
     var nameState = remember {
         mutableStateOf("")
     }
@@ -166,9 +175,10 @@ fun BMIResultScreen(modifier: Modifier = Modifier){
                                 ) {
                                     Text(
                                         text = stringResource(R.string.age)
+                                    //text = stringResource(R.string.hi) + ", $userName!"
                                     )
                                     Text(
-                                        text = stringResource(R.string.age_n),
+                                        text = stringResource(R.string.age_n) + "$userAge",
                                         color = Color.Black,
                                         fontWeight = FontWeight.SemiBold,
                                         fontSize = 20.sp
@@ -189,7 +199,7 @@ fun BMIResultScreen(modifier: Modifier = Modifier){
                                         text = stringResource(R.string.weight)
                                     )
                                     Text(
-                                        text = stringResource(R.string.weight_kg),
+                                        text = stringResource(R.string.weight_kg) + "$userWeight",
                                         color = Color.Black,
                                         fontWeight = FontWeight.SemiBold,
                                         fontSize = 20.sp
@@ -209,7 +219,7 @@ fun BMIResultScreen(modifier: Modifier = Modifier){
                                         text = stringResource(R.string.height),
                                     )
                                     Text(
-                                        text = stringResource(R.string.height_cm),
+                                        text = stringResource(R.string.height_cm) + "$userHeight",
                                         color = Color.Black,
                                         fontWeight = FontWeight.SemiBold,
                                         fontSize = 20.sp
@@ -220,6 +230,7 @@ fun BMIResultScreen(modifier: Modifier = Modifier){
                     }
                     Column (
                         modifier = Modifier
+                            .padding(top = 10.dp)
                             .fillMaxWidth()
                             .height(250.dp)
                     ){}

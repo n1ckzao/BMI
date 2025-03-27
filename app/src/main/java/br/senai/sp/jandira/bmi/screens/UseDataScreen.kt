@@ -1,5 +1,6 @@
 package br.senai.sp.jandira.bmi.screens
 
+import android.content.Context
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -33,6 +34,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -44,9 +46,22 @@ import br.senai.sp.jandira.bmi.R
 @Composable
 fun UserDataScreen(modifier: Modifier = Modifier){
 
-    var nameState = remember {
+    val context = LocalContext.current
+    val userFile = context
+        .getSharedPreferences("user_file", Context.MODE_PRIVATE)
+    val userName = userFile.getString("user_name", "")
+    val editor = userFile.edit()
+
+    var weightState = remember {
         mutableStateOf("")
     }
+    var ageState = remember {
+        mutableStateOf("")
+    }
+    var heightState = remember {
+        mutableStateOf("")
+    }
+
 
     Box(
         modifier = Modifier
@@ -68,7 +83,7 @@ fun UserDataScreen(modifier: Modifier = Modifier){
             verticalArrangement = Arrangement.SpaceBetween
         ){
                 Text(
-                    text = stringResource(R.string.hi),
+                    text = stringResource(R.string.hi) + ", $userName!",
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
                     fontSize = 30.sp,
@@ -207,8 +222,10 @@ fun UserDataScreen(modifier: Modifier = Modifier){
                         horizontalAlignment = Alignment.CenterHorizontally
                     ){
                     OutlinedTextField(
-                        value = "",
-                        onValueChange = {},
+                        value = ageState.value,
+                        onValueChange = {
+                            ageState.value = it
+                        },
                         modifier = Modifier
                             .fillMaxWidth(),
                         leadingIcon = {
@@ -225,8 +242,10 @@ fun UserDataScreen(modifier: Modifier = Modifier){
                         shape = RoundedCornerShape(16.dp)
                     )
                         OutlinedTextField(
-                        value = "",
-                        onValueChange = {},
+                        value = weightState.value,
+                        onValueChange = {
+                            weightState.value = it
+                        },
                         modifier = Modifier
                             .fillMaxWidth(),
                             leadingIcon = {
@@ -243,8 +262,10 @@ fun UserDataScreen(modifier: Modifier = Modifier){
                             shape = RoundedCornerShape(16.dp)
                         )
                         OutlinedTextField(
-                        value = "",
-                        onValueChange = {},
+                        value = heightState.value,
+                        onValueChange = {
+                            heightState.value = it
+                        },
                         modifier = Modifier
                             .fillMaxWidth(),
                             leadingIcon = {
@@ -262,7 +283,15 @@ fun UserDataScreen(modifier: Modifier = Modifier){
                         )
                     }
                     Button(
-                        onClick = {},
+                        onClick = {
+                            val age = ageState.value
+                            val weight = weightState.value.toFloat()
+                            val height = heightState.value.toFloat()
+
+                            editor.putString("user_age", age)
+                            editor.putFloat("user_weight", weight)
+                            editor.putFloat("user_height", height)
+                        },
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(48.dp),

@@ -3,18 +3,18 @@
     <string name="welcome">Bem-vindo!</string>
     <string name="your_name">Qual é o seu nome?</string>
     <string name="next">Próximo</string>
-    <string name="hi">Olá !</string>
+    <string name="hi">Olá </string>
     <string name="male">Homem</string>
     <string name="female">Mulher</string>
-    <string name="age">Idade</string>
-    <string name="weight">Peso</string>
-    <string name="height">Altura</string>
+    <string name="age">Idade:</string>
+    <string name="weight">Peso:</string>
+    <string name="height">Altura:</string>
     <string name="calculate">Calcular</string>
     <string name="result">Seu Resultado IMC</string>
     <string name="number">30,6</string>
     <string name="BMI">Você tem Sobrepeso</string>
-    <string name="age_n">17</string>
-    <string name="weight_kg">66 Kg</string>
-    <string name="height_cm">178 cm</string>
+    <string name="age_n">""</string>
+    <string name="weight_kg">""</string>
+    <string name="height_cm">""</string>
     <string name="New_Calc">Novo Calc</string>
 </resources>

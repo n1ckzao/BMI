@@ -3,18 +3,18 @@
     <string name="welcome">Welcome!</string>
     <string name="your_name">What\'s your name?</string>
     <string name="next">Next</string>
-    <string name="hi">Hi !</string>
+    <string name="hi">Hi </string>
     <string name="male">Male</string>
     <string name="female">Female</string>
-    <string name="age">Age</string>
-    <string name="weight">Weight</string>
-    <string name="height">Height</string>
+    <string name="age">Age:</string>
+    <string name="weight">Weight:</string>
+    <string name="height">Height:</string>
     <string name="calculate">Calculate</string>
     <string name="result">Your BMI Result</string>
     <string name="number">30,6</string>
     <string name="BMI">You have Overweight.</string>
-    <string name="age_n">17</string>
-    <string name="weight_kg">66 Kg</string>
-    <string name="height_cm">178 cm</string>
+    <string name="age_n">""</string>
+    <string name="weight_kg">""</string>
+    <string name="height_cm">""</string>
     <string name="New_Calc">New Calc</string>
 </resources>
