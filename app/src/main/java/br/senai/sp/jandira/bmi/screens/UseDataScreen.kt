@@ -41,21 +41,21 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import br.senai.sp.jandira.bmi.R
 
 @Composable
-fun UserDataScreen(modifier: Modifier = Modifier){
+fun UserDataScreen(navegacao:NavHostController?){
 
     val context = LocalContext.current
     val userFile = context
         .getSharedPreferences("user_file", Context.MODE_PRIVATE)
     val userName = userFile.getString("user_name", "")
-    val editor = userFile.edit()
 
-    var weightState = remember {
+    var ageState = remember {
         mutableStateOf("")
     }
-    var ageState = remember {
+    var weightState = remember {
         mutableStateOf("")
     }
     var heightState = remember {
@@ -284,13 +284,12 @@ fun UserDataScreen(modifier: Modifier = Modifier){
                     }
                     Button(
                         onClick = {
-                            val age = ageState.value
-                            val weight = weightState.value.toFloat()
-                            val height = heightState.value.toFloat()
-
-                            editor.putString("user_age", age)
-                            editor.putFloat("user_weight", weight)
-                            editor.putFloat("user_height", height)
+                            val editor = userFile.edit()
+                            editor.putInt("user_age", ageState.value.toInt())
+                            editor.putFloat("user_weight", weightState.value.toFloat())
+                            editor.putFloat("user_height", heightState.value.toFloat())
+                            editor.apply()
+                            navegacao!!.navigate(route = "bmi_result")
                         },
                         modifier = Modifier
                             .fillMaxWidth()
@@ -309,5 +308,5 @@ fun UserDataScreen(modifier: Modifier = Modifier){
 @Preview(showSystemUi = true)
 @Composable
 private fun UserDataScreenPreview(){
-    UserDataScreen()
+    UserDataScreen(navegacao = null)
 }

@@ -13,8 +13,11 @@
     <string name="result">Seu Resultado IMC</string>
     <string name="number">30,6</string>
     <string name="BMI">Você tem Sobrepeso</string>
-    <string name="age_n">""</string>
-    <string name="weight_kg">""</string>
-    <string name="height_cm">""</string>
-    <string name="New_Calc">Novo Calc</string>
+    <string name="New_Calc">Novo Calculo</string>
+    <string name="under_weight">Você está abaixo do seu peso ideal!</string>
+    <string name="normal_weight">Você tem um peso corporal normal!</string>
+    <string name="over_weight">Você está ligeiramente acima do peso!</string>
+    <string name="obesity_class1">Cuidado, você tem obesidade classe I.</string>
+    <string name="obesity_class2">Cuidado, você tem obesidade classe II.</string>
+    <string name="obesity_class3">Cuidado, você tem obesidade classe III.</string>
 </resources>

@@ -13,8 +13,11 @@
     <string name="result">Your BMI Result</string>
     <string name="number">30,6</string>
     <string name="BMI">You have Overweight.</string>
-    <string name="age_n">""</string>
-    <string name="weight_kg">""</string>
-    <string name="height_cm">""</string>
-    <string name="New_Calc">New Calc</string>
+    <string name="New_Calc">New Calculate</string>
+    <string name="under_weight">You are below your ideal weight!</string>
+    <string name="normal_weight">You have normal body weight!</string>
+    <string name="over_weight">Careful, you are slightly overweight!</string>
+    <string name="obesity_class1">Careful, you have obesity class I!</string>
+    <string name="obesity_class2">Careful, you have obesity class II!</string>
+    <string name="obesity_class3">Careful, you have obesity class III!</string>
 </resources>
