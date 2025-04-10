@@ -38,6 +38,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import br.senai.sp.jandira.bmi.R
+import br.senai.sp.jandira.bmi.calcs.bmiCalculate
+import br.senai.sp.jandira.bmi.utils.numberConvertToLocale
 
 @Composable
 fun BMIResultScreen(navegacao: NavHostController?){
@@ -48,6 +50,11 @@ fun BMIResultScreen(navegacao: NavHostController?){
     val userHeight = userFile.getFloat("user_height", 0.0f)
     val userWeight = userFile.getFloat("user_weight", 0.0f)
 
+    //Obter os dados do imc do usuario
+    val bmi = bmiCalculate(
+        userWeight.toInt(),
+        userHeight.toDouble().div(100)
+    )
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -127,7 +134,7 @@ fun BMIResultScreen(navegacao: NavHostController?){
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ){
                                 Text(
-                                    text = stringResource(R.string.number),
+                                    text = numberConvertToLocale(bmi.bmi.second),
                                     color = Color.Black,
                                     fontWeight = FontWeight.SemiBold,
                                     fontSize = 40.sp
@@ -142,7 +149,7 @@ fun BMIResultScreen(navegacao: NavHostController?){
                         horizontalArrangement = Arrangement.Center
                     ){
                         Text(
-                            text = stringResource(R.string.BMI),
+                            text = bmi.bmi.first,
                             color = Color.Black,
                             fontWeight = FontWeight.SemiBold,
                             fontSize = 30.sp
@@ -217,7 +224,7 @@ fun BMIResultScreen(navegacao: NavHostController?){
                                         text = stringResource(R.string.height),
                                     )
                                     Text(
-                                        text = "$userHeight cm",
+                                        text = "$userHeight m",
                                         color = Color.Black,
                                         fontWeight = FontWeight.SemiBold,
                                         fontSize = 20.sp

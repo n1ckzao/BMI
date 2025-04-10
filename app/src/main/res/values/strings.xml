@@ -11,7 +11,6 @@
     <string name="height">Height:</string>
     <string name="calculate">Calculate</string>
     <string name="result">Your BMI Result</string>
-    <string name="number">30,6</string>
     <string name="BMI">You have Overweight.</string>
     <string name="New_Calc">New Calculate</string>
     <string name="under_weight">You are below your ideal weight!</string>

@@ -11,7 +11,6 @@
     <string name="height">Altura:</string>
     <string name="calculate">Calcular</string>
     <string name="result">Seu Resultado IMC</string>
-    <string name="number">30,6</string>
     <string name="BMI">Você tem Sobrepeso</string>
     <string name="New_Calc">Novo Calculo</string>
     <string name="under_weight">Você está abaixo do seu peso ideal!</string>
