@@ -5,5 +5,5 @@ import androidx.compose.ui.graphics.Color
 data class Bmi (
     var color: Color = Color.Transparent,
     var status: BmiStatus = BmiStatus.NORMAL,
-    var bmi: Pair<String, Double>
+    var bmi: Pair <String, Double>
 )

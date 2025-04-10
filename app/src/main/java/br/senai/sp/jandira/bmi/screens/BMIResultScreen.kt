@@ -1,7 +1,6 @@
 package br.senai.sp.jandira.bmi.screens
 
 import android.content.Context
-import androidx.compose.animation.expandHorizontally
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -22,15 +21,12 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.VertexMode
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -51,7 +47,7 @@ fun BMIResultScreen(navegacao: NavHostController?){
     val userWeight = userFile.getFloat("user_weight", 0.0f)
 
     //Obter os dados do imc do usuario
-    val bmi = bmiCalculate(
+    val result = bmiCalculate(
         userWeight.toInt(),
         userHeight.toDouble().div(100)
     )
@@ -119,12 +115,7 @@ fun BMIResultScreen(navegacao: NavHostController?){
                             shape = CircleShape,
                             border = BorderStroke(
                                 width = 4.dp,
-                                brush = Brush.linearGradient(
-                                    listOf(
-                                        Color(0xFF2E6FB6),
-                                        Color(0xFF021A9F)
-                                    )
-                                )
+                                color = result.color
                             )
                         ) {
                             Column (
@@ -134,7 +125,7 @@ fun BMIResultScreen(navegacao: NavHostController?){
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ){
                                 Text(
-                                    text = numberConvertToLocale(bmi.bmi.second),
+                                    text = numberConvertToLocale(result.bmi.second),
                                     color = Color.Black,
                                     fontWeight = FontWeight.SemiBold,
                                     fontSize = 40.sp
@@ -149,7 +140,7 @@ fun BMIResultScreen(navegacao: NavHostController?){
                         horizontalArrangement = Arrangement.Center
                     ){
                         Text(
-                            text = bmi.bmi.first,
+                            text = result.bmi.first,
                             color = Color.Black,
                             fontWeight = FontWeight.SemiBold,
                             fontSize = 30.sp
