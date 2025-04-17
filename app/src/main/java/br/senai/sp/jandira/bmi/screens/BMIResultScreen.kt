@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -35,6 +36,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import br.senai.sp.jandira.bmi.R
 import br.senai.sp.jandira.bmi.calcs.bmiCalculate
+import br.senai.sp.jandira.bmi.model.BmiStatus
+import br.senai.sp.jandira.bmi.screens.components.BmiLevel
 import br.senai.sp.jandira.bmi.utils.numberConvertToLocale
 
 @Composable
@@ -51,6 +54,8 @@ fun BMIResultScreen(navegacao: NavHostController?){
         userWeight.toInt(),
         userHeight.toDouble().div(100)
     )
+
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -124,12 +129,12 @@ fun BMIResultScreen(navegacao: NavHostController?){
                                 verticalArrangement = Arrangement.Center,
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ){
-                                Text(
-                                    text = numberConvertToLocale(result.bmi.second),
-                                    color = Color.Black,
-                                    fontWeight = FontWeight.SemiBold,
-                                    fontSize = 40.sp
-                                )
+//                                Text(
+//                                    text = numberConvertToLocale(result.bmi.second),
+//                                    color = Color.Black,
+//                                    fontWeight = FontWeight.SemiBold,
+//                                    fontSize = 40.sp
+//                                )
                             }
                         }
                     }
@@ -143,7 +148,7 @@ fun BMIResultScreen(navegacao: NavHostController?){
                             text = result.bmi.first,
                             color = Color.Black,
                             fontWeight = FontWeight.SemiBold,
-                            fontSize = 30.sp
+                            fontSize = 25.sp
                         )
                     }
                     Row (
@@ -229,7 +234,44 @@ fun BMIResultScreen(navegacao: NavHostController?){
                             .padding(top = 10.dp)
                             .fillMaxWidth()
                             .height(250.dp)
-                    ){}
+                    ){
+                        BmiLevel(
+                            leftText = "Underweight",
+                            rightText = "< 18.5",
+                            bulletColor = colorResource(R.color.light_blue),
+                            background = if(result.status == BmiStatus.UNDER_WEIGHT) colorResource(R.color.light_blue) else Color.Transparent
+                        )
+                        BmiLevel(
+                            leftText = "Normal",
+                            rightText = "18.6 - 24.9",
+                            bulletColor = colorResource(R.color.light_green),
+                            background = if(result.status == BmiStatus.NORMAL) colorResource(R.color.light_green) else Color.Transparent
+                        )
+                        BmiLevel(
+                            leftText = "Overweight",
+                            rightText = "25.0 - 29.9",
+                            bulletColor = colorResource(R.color.yellow),
+                            background = if(result.status == BmiStatus.OVER_WEIGHT) colorResource(R.color.yellow) else Color.Transparent
+                        )
+                        BmiLevel(
+                            leftText = "Obesity class I",
+                            rightText = "30.0 - 34.9",
+                            bulletColor = colorResource(R.color.light_orange),
+                            background = if(result.status == BmiStatus.OBESITY_1) colorResource(R.color.light_orange) else Color.Transparent
+                        )
+                        BmiLevel(
+                            leftText = "Obesity class II",
+                            rightText = "35.0 - 39.9",
+                            bulletColor = colorResource(R.color.dark_orange),
+                            background = if(result.status == BmiStatus.OBESITY_2) colorResource(R.color.dark_orange) else Color.Transparent
+                        )
+                        BmiLevel(
+                            leftText = "Obesity class III",
+                            rightText = "> 39.9",
+                            bulletColor = colorResource(R.color.red),
+                            background = if(result.status == BmiStatus.OBESITY_3) colorResource(R.color.red) else Color.Transparent
+                        )
+                    }
                     HorizontalDivider()
                     Button(
                         onClick = {},

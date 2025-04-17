@@ -15,8 +15,8 @@
     <string name="New_Calc">Nouveau calcul</string>
     <string name="under_weight">Vous êtes en dessous de votre poids idéal!</string>
     <string name="normal_weight">Vous avez un poids corporel normal!</string>
-    <string name="over_weight">Prudent, vous êtes légèrement en surpoids!</string>
-    <string name="obesity_class1">Prudent, vous avez de l\'obésité classe I!</string>
-    <string name="obesity_class2">Prudent, vous avez de l\'obésité classe II!</string>
-    <string name="obesity_class3">Prudent, vous avez de l\'obésité classe III!</string>
+    <string name="over_weight">Vous êtes légèrement en surpoids!</string>
+    <string name="obesity_class1">Vous avez de l\'obésité classe I!</string>
+    <string name="obesity_class2">Vous avez de l\'obésité classe II!</string>
+    <string name="obesity_class3">Vous avez de l\'obésité classe III!</string>
 </resources>
